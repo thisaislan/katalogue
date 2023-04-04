@@ -1,0 +1,16 @@
+{
+    "name": "thisaislan.katalogue",
+    "version": "0.1.0",
+    "displayName": "Katalogue",
+    "description": "A visually well-structured compilation of elements that are reusable in your project in your Unity project.",
+    "documentationUrl": "https://github.com/thisaislan/katalogue",
+    "changelogUrl": "https://github.com/thisaislan/katalogue/main/CHANGELOG.md",
+    "licensesUrl": "https://github.com/thisaislan/katalogue/blob/main/LICENSE.md",
+    "keywords": [
+        "Catalog",
+        "Prefab",
+        "Easy"
+    ],
+    "category": "Editor",
+    "dependencies": {}
+}
