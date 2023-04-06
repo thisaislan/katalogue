@@ -27,7 +27,13 @@ namespace Thisaislan.Katalogue.Editor.Constants
         
         internal const string KataloguePrefabToAddLabel = "Prefab";
         
-        internal const string MainWindowTitle = "Katalogue";
+        internal const string KatalogueFolderLabel = "Folder";
+        
+        internal const string KatalogueFolderEmptySelection = "None (Folder)";
+        internal const string KatalogueFolderTitleSelection = "Select a folder";
+        internal const string KatalogueFolderFolderSelection = "None (Folder)";
+        
+        internal const string MainWindowTitle = "Katalogue window";
         
         internal const string OpenButtonLabel = "Open";
         
@@ -51,6 +57,22 @@ namespace Thisaislan.Katalogue.Editor.Constants
             "Want to see all Katalogues files at once? Go to " + M.MenuItemOpenMainWindowMenu + ".\n\n" +
             "You can open a prefab just by clicking on its image.\n\n" +
             "Katalogue file will prevent the insertion of duplicate prefabs.\n\n" +
+            "You can create a new GameObject in the scene or inside the selected game object." +
+            " The Select button will hint this to you.\n\n" +
+            "Enjoy!\n" +
+            ": )";
+        
+        internal const string KatalogueFolderipDescription = "\n" +
+            "If you want to create a catalog with all the prefabs inside one folder then this is the file you want.\n\n" +
+            "You can have as many Katalogues Folders as you like.\n\n" +
+            "Keep these files inside of the Kalalogue folder or subfolders.\n\n" +
+            "Use short descriptions with distinct information about each prefab.\n\n" +
+            "Generate new menus every time you create, delete or rename a Katalogue Folder (" + M.MenuItemGenerateMenu +").\n\n" +
+            "Files in the "+ M.PackageFolderName + "/" +M.MenuItemGenerateInnerFolderName + " folder are " +
+            "auto-generated, but can be committed for ease.\n\n" +
+            "Want to see all Katalogues files at once? Go to " + M.MenuItemOpenMainWindowMenu + ".\n\n" +
+            "You can open a prefab just by clicking on its image.\n\n" +
+            "Katalogue Folder allow duplicated prefabs.\n\n" +
             "You can create a new GameObject in the scene or inside the selected game object." +
             " The Select button will hint this to you.\n\n" +
             "Enjoy!\n" +

@@ -30,7 +30,7 @@ Then meet the Katalogue :heart_eyes:
 
 ## How it works
 
-After installing, go to the new folder called `Katalogue` and you can create your first Katalogue file there, right click `Create/Katalogue/New file`
+After installing, go to the new folder called `Katalogue` and you can create your first Katalogue file there, right click `Create/Katalogue/New Katalogue`
 
 ![Katalogue scriptableObject edior](https://github.com/thisaislan/just-images/raw/main/images/katalogue/katalogue_scriptable_object_edior.png)
 
@@ -44,7 +44,7 @@ Put a nice name and add every prefab you want
 
 And done! :grin: You just created your first Katalogue!
 
-Now let's instantiate some new game objects in the scene using your newly created Katalogue. To do that open the main Katalogue window in `Tools/Katalogue/Open Katalogue`
+Now let's instantiate some new game objects in the scene using your newly created Katalogue. To do that open the main Katalogue window in `Tools/Katalogue/Open Katalogue window`
 
 ![Katalogue main window](https://github.com/thisaislan/just-images/raw/main/images/katalogue/katalogue_main_window.png)
 
@@ -64,9 +64,15 @@ By clicking on this menu, a smaller version of the Katalogue window will open an
 
 <br>
 
-> **_Tip_**: You can see tips about the tool in the Katalogue file by clicking in the first label :wink:
+Okay, let's say now you just want to create a catalog from an entire folder, easy! :smirk:. Just to create a `Katalogue Folder` by right clicking `Create/Katalogue/New Katalogue Folder`,select the desired folder and that's it!
 
+![Katalogue menu item window](https://github.com/thisaislan/just-images/raw/main/images/katalogue/katalogue_folder_scriptable_object_edior.png)
 
+<br>
+
+> **_Tip_**: You can see tips about the tool in the Katalogue files by clicking in the first label :wink:
+
+<br>
 
 ## Installation
 

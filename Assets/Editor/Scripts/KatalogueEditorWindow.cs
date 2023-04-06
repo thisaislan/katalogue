@@ -3,9 +3,11 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
+using Thisaislan.Katalogue.Editor.ScriptableObjects;
 
 using M = Thisaislan.Katalogue.Editor.Metas.Metadata;
 using C = Thisaislan.Katalogue.Editor.Constants.Consts;
+
 using KatalogueData = Thisaislan.Katalogue.Editor.ScriptableObjects.Katalogue.KatalogueData;
 
 namespace Thisaislan.Katalogue.Editor
@@ -59,13 +61,16 @@ namespace Thisaislan.Katalogue.Editor
             this.isSingleMode = isSingleMode; 
             this.selectedPositionPopup = 0;
 
-            AddEventListener();
+            AddEventListeners();
         }
         
         private void InitKatalogueDataList()
         {
-            KatalalogueEditor.CleanDataList(katalogueInUse);
-            SetDataList();
+            if (katalogueInUse != null)
+            {
+                katalogueInUse.Init();
+                SetDataList();
+            }
         }
         
         private void SetDataList()
@@ -99,8 +104,17 @@ namespace Thisaislan.Katalogue.Editor
         private IEnumerable<ScriptableObjects.Katalogue> GetKatalogue(IEnumerable<string> kataloguePaths) =>
             kataloguePaths.Select(path => AssetDatabase.LoadAssetAtPath<ScriptableObjects.Katalogue>(path));
 
-        private void AddEventListener() =>
-            KatalalogueEditor.DataChangedEvent += OnDataChangedEvent;
+        private void AddEventListeners()
+        {
+            KatalalogueEditor.dataChangedEvent += OnDataChangedEvent;
+            KatalalogueEditor.prefabChangedEvent += OnPrefabChanged;
+        }
+
+        private void RemoveEventListeners()
+        {
+            KatalalogueEditor.dataChangedEvent -= OnDataChangedEvent;
+            KatalalogueEditor.prefabChangedEvent -= OnPrefabChanged;
+        }
 
         #endregion //SettingsRegion
 
@@ -116,7 +130,7 @@ namespace Thisaislan.Katalogue.Editor
         }
 
         private void OnDestroy() =>
-            KatalalogueEditor.DataChangedEvent -= OnDataChangedEvent;
+            RemoveEventListeners();
 
         #endregion //OverrideRegion
 
@@ -211,6 +225,17 @@ namespace Thisaislan.Katalogue.Editor
             }
         }
         
+        private void OnPrefabChanged(string prefabPath)
+        {
+            if (katalogueInUse != null && katalogueInUse is KatalogueFolder)
+            {
+                if (prefabPath.Contains(M.MenuItemGenerateMainFolderName + (katalogueInUse as KatalogueFolder)?.folderPath))
+                {
+                    ResetDataList();
+                }
+            }
+        }
+        
         private void ResetKatalogueLists()
         {
             InitKatalogueLists();
@@ -246,7 +271,8 @@ namespace Thisaislan.Katalogue.Editor
 
         private void ResetDataList()
         {
-            KatalalogueEditor.CleanDataList(katalogueInUse);
+            if(katalogueInUse != null) { katalogueInUse.Init(); }
+            
             UpdateDataListBySearch();
         }
 
