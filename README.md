@@ -11,6 +11,15 @@ Wouldn't it be awesome if there was `a tool to help you create some catalogs` wi
 Then meet the Katalogue :heart_eyes:
 
 <br>
+<br>
+
+<h4 align="center" style="text-align:center;">
+  <a href="https://github.com/thisaislan/katalogue">
+    <img src="Assets/Editor/Resources/katalogue_mini_logo.png">    
+  </a>
+
+<br>
+<br>
 
 <p align="center">
     <a href="https://unity3d.com/get-unity/download">
@@ -30,7 +39,7 @@ Then meet the Katalogue :heart_eyes:
 
 ## How it works
 
-After installing, go to the new folder called `Katalogue` and you can create your first Katalogue file there, right click `Create/Katalogue/New file`
+After installing, go to the new folder called `Katalogue` and you can create your first Katalogue file there, right click `Create/Katalogue/New Katalogue`
 
 ![Katalogue scriptableObject edior](https://github.com/thisaislan/just-images/raw/main/images/katalogue/katalogue_scriptable_object_edior.png)
 
@@ -44,7 +53,7 @@ Put a nice name and add every prefab you want
 
 And done! :grin: You just created your first Katalogue!
 
-Now let's instantiate some new game objects in the scene using your newly created Katalogue. To do that open the main Katalogue window in `Tools/Katalogue/Open Katalogue`
+Now let's instantiate some new game objects in the scene using your newly created Katalogue. To do that open the main Katalogue window in `Tools/Katalogue/Open Katalogue window`
 
 ![Katalogue main window](https://github.com/thisaislan/just-images/raw/main/images/katalogue/katalogue_main_window.png)
 
@@ -64,9 +73,15 @@ By clicking on this menu, a smaller version of the Katalogue window will open an
 
 <br>
 
-> **_Tip_**: You can see tips about the tool in the Katalogue file by clicking in the first label :wink:
+Okay, let's say now you just want to create a catalog from an entire folder, easy! :smirk:. Just to create a `Katalogue Folder` by right clicking `Create/Katalogue/New Katalogue Folder`,select the desired folder and that's it!
 
+![Katalogue menu item window](https://github.com/thisaislan/just-images/raw/main/images/katalogue/katalogue_folder_scriptable_object_edior.png)
 
+<br>
+
+> **_Tip_**: You can see tips about the tool in the Katalogue files by clicking in the first label :wink:
+
+<br>
 
 ## Installation
 
@@ -89,14 +104,20 @@ My friends and family, and you for having come here!
 ## License
 Copyright (c) 2021-present Aislan Tavares (@thisaislan) and Contributors. Ped is free and open-source software licensed under the [MIT License](https://github.com/thisaislan/katalogue/blob/main/LICENSE.md).
 
-<br>
-<br>
 
+<!--
+  ko-fi donation button 
+ -->
+<br>
+<br>
+<br>
+<br>
 <h4 align="center" style="text-align:center;">
-  <a href="https://github.com/thisaislan/katalogue">
-    <img src="Assets/Editor/Resources/katalogue_mini_logo.png">    
+  <a href="https://ko-fi.com/thisaislan">
+    <img src="https://github.com/thisaislan/just-images/raw/main/images/ko-fi/ko-fi_donation_banner.gif" style="width: 460px">
   </a>
-
-Enjoy! :heart:
 </h4>
+<br>
+<br>
+<br>
 <br>

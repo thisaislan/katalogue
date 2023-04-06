@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,7 +11,9 @@ namespace Thisaislan.Katalogue.Editor
     internal static class KatalalogueEditor
     {
         internal delegate void DataChangedDelegate(ScriptableObjects.Katalogue katalogue);
-        internal static event DataChangedDelegate DataChangedEvent;
+        internal static event DataChangedDelegate dataChangedEvent;
+        internal delegate void PrefabChangedDelegate(string prefabPath);
+        internal static event PrefabChangedDelegate prefabChangedEvent;
         
         #region DrawRegion
 
@@ -154,10 +155,13 @@ namespace Thisaislan.Katalogue.Editor
 
             if (isEditionMode)
             {
-                if (GUILayoutXButton())
+                if (actionOnClick != null)
                 {
-                    actionOnClick.Invoke();
-                    CleanFocus();
+                    if (GUILayoutXButton())
+                    {
+                        actionOnClick.Invoke();
+                        CleanFocus();
+                    }
                 }
             }
             else
@@ -249,7 +253,15 @@ namespace Thisaislan.Katalogue.Editor
                     GUILayout.MinWidth(minWidth),
                     GUILayoutMaxWidth()
                 ) as GameObject;
-
+        
+        internal static bool EditorGUILayoutOpenFolderButton(string value) =>
+            GUILayout.Button(
+                string.IsNullOrWhiteSpace(value) ? C.KatalogueFolderEmptySelection: value,
+                EditorStyles.objectField,
+                GUILayout.MinWidth(M.FieldFolderSelectionMinWidth),
+                GUILayoutMaxWidth()
+            );
+        
         internal static string EditorGUILayoutTextField(string value, float height, float minWidth) =>
              EditorGUILayout.TextArea(
                      value,
@@ -341,26 +353,10 @@ namespace Thisaislan.Katalogue.Editor
         #region UtilsRegion
 
         internal static void NotifyDataChanged(ScriptableObjects.Katalogue katalogue) =>
-            DataChangedEvent?.Invoke(katalogue);
+            dataChangedEvent?.Invoke(katalogue);
         
-        internal static void CleanDataList(ScriptableObjects.Katalogue katalogue)
-        {
-            if (katalogue != null)
-            {
-                for (int index = 0; index < katalogue.katalogueDatas.Count; index++)
-                {
-                    if (katalogue.katalogueDatas[index].IsPrefabNull())
-                    {
-                        katalogue.katalogueDatas.RemoveAt(index);
-                        index--;
-                    }
-                }
-
-                katalogue.katalogueDatas = katalogue.katalogueDatas.OrderBy(data => data.prefab.name).ToList();
-
-                PersistData(katalogue);
-            }
-        }
+        internal static void NotifyPrefabChanged(string prefabPath) =>
+            prefabChangedEvent?.Invoke(prefabPath);
 
         internal static void PersistData(ScriptableObjects.Katalogue katalogue)
         {

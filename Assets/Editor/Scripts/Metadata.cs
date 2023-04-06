@@ -1,4 +1,5 @@
 using System.Text;
+using UnityEngine;
 
 using C = Thisaislan.Katalogue.Editor.Constants.Consts;
 
@@ -7,7 +8,8 @@ namespace Thisaislan.Katalogue.Editor.Metas
     internal static class Metadata
     {
         
-        internal const int AssetMenuDataOrder = 1;
+        internal const int KatalogueAssetMenuDataOrder = 1;
+        internal const int KatalogueFolderAssetMenuDataOrder = 2;
         
         internal const int AddButtonPrefabToAddHeight = 20;
         internal const int AddButtonPrefabToAddMinWidth = 360;
@@ -20,6 +22,7 @@ namespace Thisaislan.Katalogue.Editor.Metas
         internal const int DescriptionPrefabToAddMinWidth = 230;
         
         internal const int FieldPrefabToAddMinWidth = 226;
+        internal const int FieldFolderSelectionMinWidth = 226;
         
         internal const int GUILayoutSpaceBig = 20;
         internal const int GUILayoutSpaceMedium = 10;
@@ -39,7 +42,8 @@ namespace Thisaislan.Katalogue.Editor.Metas
         internal const int RefreshButtonHeight = 18;
         internal const int RefreshButtonWidth = 50;
         
-        internal const int ScrollHeight = 470;
+        internal const int KatalogueScrollHeight = 470;
+        internal const int KatalogueFolderScrollHeight = 600;
         
         internal const int SearchFieldMinWidth = 350;
         
@@ -49,9 +53,13 @@ namespace Thisaislan.Katalogue.Editor.Metas
         internal const int XButtonHeight = 10;
         internal const int XButtonWidth = 20;
         
-        internal const string AssetMenuDataName = "Katalogue/New File";
+        internal const string AssetRootMenuDataName = "Katalogue";
+        
+        internal const string KatalogueAssetMenuDataName = AssetRootMenuDataName + "/New Katalogue";
+        internal const string KatalogueFodlerAssetMenuDataName = AssetRootMenuDataName + "/New Katalogue Folder";
 
-        internal const string DataFileName = "Katalogue";
+        internal const string KatalogueDataFileName = "Katalogue";
+        internal const string KatalogueFolderDataFileName = "Katalogue Folder";
 
         internal const string MenuItemGenerateApplicationFolderName = "Katalogue";
         internal const string MenuItemGenerateInnerFolderName = "Editor";
@@ -69,6 +77,9 @@ namespace Thisaislan.Katalogue.Editor.Metas
         internal const string ScriptFileType = ".cs";
         
         internal static readonly string FindKatalogueAssetsFilter = $"t:{nameof(Katalogue)}";
+        internal static readonly string FindPrefabsAssetsFilter = $"t:{nameof(GameObject)}";
+
+        internal const string KatalogueFolderSelectionStart = "Assets";
 
         internal static string GetScriptFile(string fileName, string realFileName, string filePath)
         {

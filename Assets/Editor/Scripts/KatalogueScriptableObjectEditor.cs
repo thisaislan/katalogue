@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -139,15 +138,15 @@ namespace Thisaislan.Katalogue.Editor
             
             if (KatalalogueEditor.GUILayoutAddPrefabButton())
             {
-                if (CanAddNewPrefab())
+                if (prefabToAdd != null)
                 {
-                    AddNewData();
-                    KatalalogueEditor.PersistData(katalogue);
+                    if (AddNewData()){
                     
-                    UpdateDataListBySearch();
-                    CleanFields();
+                        UpdateDataListBySearch();
+                        CleanFields();
                     
-                    KatalalogueEditor.CleanFocus();
+                        KatalalogueEditor.CleanFocus();
+                    }
                 }
             }
             
@@ -165,7 +164,7 @@ namespace Thisaislan.Katalogue.Editor
         {
             EditorGUILayout.BeginVertical();
 
-            scrollPos = EditorGUILayout.BeginScrollView(scrollPos,GUILayout.Height(M.ScrollHeight));
+            scrollPos = EditorGUILayout.BeginScrollView(scrollPos,GUILayout.Height(M.KatalogueScrollHeight));
             
             try
             {
@@ -194,14 +193,20 @@ namespace Thisaislan.Katalogue.Editor
         
         private void InitDataList()
         {
-            KatalalogueEditor.CleanDataList(katalogue);
-            SetDataList();
+            if (katalogue != null)
+            {
+                katalogue.Init();
+                SetDataList();
+            }
         }
         
         private void ResetDataList()
         {
-            KatalalogueEditor.CleanDataList(katalogue);
-            UpdateDataListBySearch();
+            if (katalogue != null)
+            {
+                katalogue.Init();
+                UpdateDataListBySearch();
+            }
         }
 
         private void SetDataList() =>
@@ -214,22 +219,9 @@ namespace Thisaislan.Katalogue.Editor
                     searchString, StringComparison.InvariantCultureIgnoreCase));
         }
 
-        private bool CanAddNewPrefab() =>
-            katalogue.katalogueDatas.FindIndex(data => data.prefab.Equals(prefabToAdd)) == -1 &&
-            prefabToAdd != null;
+        private bool AddNewData() =>
+            katalogue.AddNewKatalogueData(prefabToAdd, descriptionToAdd);
         
-        private void AddNewData() =>
-            katalogue.AddNewKatalogueData(GetNewDataToAdd(), GetIndexOfNewData());
-
-        private int GetIndexOfNewData() =>
-            ~katalogue.katalogueDatas.Select(data => data.prefab.name).ToList().BinarySearch(prefabToAdd.name);
-        
-        private KatalogueData GetNewDataToAdd() =>
-            new() {
-                prefab = prefabToAdd,
-                description = descriptionToAdd
-            };
-
         private void UpdateDataListBySearch()
         {
             if (string.IsNullOrWhiteSpace(searchString)) { SetDataList(); }
@@ -245,7 +237,6 @@ namespace Thisaislan.Katalogue.Editor
         private void DeleteDataFromList(KatalogueData katalogueData)
         {
             katalogue.RemoveKatalogueData(katalogueData);
-            KatalalogueEditor.PersistData(katalogue);
             UpdateDataListBySearch();
         }
         
